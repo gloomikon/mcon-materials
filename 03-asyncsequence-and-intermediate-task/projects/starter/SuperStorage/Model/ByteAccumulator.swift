@@ -46,7 +46,8 @@ struct ByteAccumulator: CustomStringConvertible {
   init(name: String, size: Int) {
     self.name = name
     self.size = size
-    chunkCount = max(Int(Double(size) / 20), 1)
+//    chunkCount = max(Int(Double(size) / 20), 1)
+    self.chunkCount = 1024
     bytes = [UInt8](repeating: 0, count: size)
   }
 
@@ -64,6 +65,7 @@ struct ByteAccumulator: CustomStringConvertible {
 
   mutating func checkCompleted() -> Bool {
     defer { counter = 0 }
+    print(counter)
     return counter == 0
   }
 
